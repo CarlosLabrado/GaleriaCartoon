@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.nablab.basicpuff"
+        applicationId "com.nablab.galeriacartoon"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
@@ -35,6 +35,7 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':ParseLoginUI')
+    compile project(':library')
     compile 'com.android.support:appcompat-v7:22.1.1'
     // Support Libraries
     compile 'com.android.support:support-v4:22.1.1'
@@ -65,4 +66,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     // google maps
     compile 'com.google.android.gms:play-services:7.3.0'
+    // Android Image slider
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+//    compile 'com.daimajia.slider:library:1.1.2@aar'
+    compile 'com.daimajia.androidanimations:library:1.0.3@aar'
+
 }

@@ -2,6 +2,7 @@ package com.nablab.galeriacartoon;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.TypedArray;
 import android.location.Location;
@@ -135,10 +136,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 .obtainTypedArray(R.array.nav_drawer_icons);
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
-        // Map
+        // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // List
+        // Store
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        // Contact
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         // Recycle the typed array
         navMenuIcons.recycle();
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
@@ -262,7 +265,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         boolean isFragmentTransition = false;
         switch (position) {
             case 0:
-                fragment = new FirstFragment();
+                Intent intent = new Intent(this, StoreActivity.class);
+                startActivity(intent);
+//                fragment = new FirstFragment();
                 break;
             case 1:
                 fragment = new FirstFragment();
