@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -37,6 +36,7 @@ import butterknife.InjectView;
 public class StoreActivity extends AppCompatActivity implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
 
+    private SliderLayout mDemoSliderBanner;
     private SliderLayout mDemoSlider;
 
     // Navigation Drawer
@@ -67,6 +67,7 @@ public class StoreActivity extends AppCompatActivity implements  BaseSliderView.
         ButterKnife.inject(this);
 
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
+        mDemoSliderBanner = (SliderLayout)findViewById(R.id.sliderBanner);
 
         bus = new AndroidBus();
         bus.register(this);
@@ -76,7 +77,64 @@ public class StoreActivity extends AppCompatActivity implements  BaseSliderView.
 
 //        setUpDrawer();
 
+        setUpBanner();
 
+        setUpSlidingGallery();
+
+    }
+
+    private void setUpBanner() {
+        HashMap<String,String> url_maps = new HashMap<String, String>();
+        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
+        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
+        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
+        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
+        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
+
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("1",R.drawable.c_1_banner);
+        file_maps.put("2",R.drawable.c_2_banner);
+        file_maps.put("3",R.drawable.c_3_banner);
+        file_maps.put("4",R.drawable.c_4_banner);
+        file_maps.put("5",R.drawable.c_5_banner);
+
+        for(String name : file_maps.keySet()){
+            TextSliderView textSliderView = new TextSliderView(this, true);
+            // initialize a SliderLayout
+            textSliderView
+                    .description("")
+                    .image(file_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop)
+                    .setOnSliderClickListener(this);
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra",name);
+
+            mDemoSliderBanner.addSlider(textSliderView);
+        }
+        mDemoSliderBanner.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        mDemoSliderBanner.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+//        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+//        mDemoSlider.setDuration(4000);
+        mDemoSliderBanner.addOnPageChangeListener(this);
+//        ListView l = (ListView)findViewById(R.id.transformers);
+//        l.setAdapter(new TransformerAdapter(this));
+//        l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                mDemoSlider.setPresetTransformer(((TextView) view).getText().toString());
+//                Toast.makeText(StoreActivity.this, ((TextView) view).getText().toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        mDemoSliderBanner.setPresetTransformer("Default");
+//        mDemoSliderBanner.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator));
+
+    }
+
+    private void setUpSlidingGallery() {
         HashMap<String,String> url_maps = new HashMap<String, String>();
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
@@ -130,11 +188,7 @@ public class StoreActivity extends AppCompatActivity implements  BaseSliderView.
 //            }
 //        });
 
-        mDemoSlider.setPresetTransformer("Default");
-        mDemoSlider.stopAutoCycle();
-
-
-
+        mDemoSlider.setPresetTransformer("FlipHorizontal");
     }
 
     /**
@@ -238,7 +292,7 @@ public class StoreActivity extends AppCompatActivity implements  BaseSliderView.
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_custom_indicator:
-                mDemoSlider.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator));
+//                mDemoSlider.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator));
                 break;
             case R.id.action_custom_child_animation:
                 mDemoSlider.setCustomAnimation(new ChildAnimationExample());

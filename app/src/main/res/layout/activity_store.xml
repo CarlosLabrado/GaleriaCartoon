@@ -1,7 +1,6 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nablab.galeriacartoon.StoreActivity">
@@ -9,9 +8,9 @@
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout">
+        android:layout_height="wrap_content">
 
 
         <include
@@ -19,51 +18,78 @@
             layout="@layout/toolbar" />
 
     </RelativeLayout>
-    <com.daimajia.slider.library.SliderLayout
-        android:id="@+id/slider"
-        android:layout_width="match_parent"
-        custom:pager_animation="Accordion"
-        custom:auto_cycle="true"
-        custom:indicator_visibility="visible"
-        custom:pager_animation_span="1100"
-        android:layout_height="400dp"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <com.daimajia.slider.library.Indicators.PagerIndicator
-        android:id="@+id/custom_indicator"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayoutBanner"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/relativeLayout">
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/sliderBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            custom:auto_cycle="true"
+            custom:indicator_visibility="visible"
+            custom:pager_animation="Accordion"
+            custom:pager_animation_span="2000" />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            custom:selected_color="#0095BF"
+            custom:unselected_color="#55333333"
+            custom:selected_drawable="@drawable/bird"
+            custom:shape="oval"
+            custom:selected_padding_left="5dp"
+            custom:selected_padding_right="5dp"
+            custom:unselected_padding_left="5dp"
+            custom:unselected_padding_right="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            custom:selected_width="6dp"
+            custom:selected_height="6dp"
+            custom:unselected_width="6dp"
+            custom:unselected_height="6dp"
+            android:layout_marginBottom="20dp"
+            />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewBills"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        custom:selected_color="#0095BF"
-        custom:unselected_color="#55333333"
-        custom:selected_drawable="@drawable/bird"
-        custom:shape="oval"
-        custom:selected_padding_left="5dp"
-        custom:selected_padding_right="5dp"
-        custom:unselected_padding_left="5dp"
-        custom:unselected_padding_right="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        custom:selected_width="6dp"
-        custom:selected_height="6dp"
-        custom:unselected_width="6dp"
-        custom:unselected_height="6dp"
-        android:layout_marginBottom="20dp"
-        />
-    <com.daimajia.slider.library.Indicators.PagerIndicator
-        android:id="@+id/custom_indicator2"
-        style="@style/AndroidImageSlider_Corner_Oval_Orange"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        />
-    <!--<ListView-->
-        <!--android:layout_below="@+id/slider"-->
-        <!--android:id="@+id/transformers"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"></ListView>-->
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/relativeLayoutBanner">
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout"
+            custom:auto_cycle="false"
+            custom:indicator_visibility="visible"
+            custom:pager_animation="Accordion"
+            custom:pager_animation_span="1100" />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator2"
+            style="@style/AndroidImageSlider_Corner_Oval_Orange"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp" />
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>
