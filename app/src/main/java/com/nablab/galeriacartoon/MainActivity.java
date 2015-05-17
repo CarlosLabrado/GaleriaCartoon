@@ -2,7 +2,6 @@ package com.nablab.galeriacartoon;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.TypedArray;
 import android.location.Location;
@@ -265,9 +264,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         boolean isFragmentTransition = false;
         switch (position) {
             case 0:
-                Intent intent = new Intent(this, StoreActivity.class);
-                startActivity(intent);
-//                fragment = new FirstFragment();
+//                Intent intent = new Intent(this, StoreActivity.class);
+//                startActivity(intent);
+                fragment = new StoreFragment();
                 break;
             case 1:
                 fragment = new FirstFragment();

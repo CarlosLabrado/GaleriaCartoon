@@ -3,27 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nablab.galeriacartoon.StoreActivity">
-
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
-
-    </RelativeLayout>
+    tools:context="com.nablab.galeriacartoon.StoreFragment">
 
     <RelativeLayout
         android:id="@+id/relativeLayoutBanner"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/relativeLayout">
+        android:layout_height="100dp">
 
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/sliderBanner"
@@ -71,10 +56,18 @@
         android:layout_alignParentTop="false"
         android:layout_below="@+id/relativeLayoutBanner">
 
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccione un estilo"
+            android:layout_margin="5dp"
+            android:textSize="18sp"/>
+
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/slider"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:layout_marginTop="30dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/relativeLayout"
@@ -83,12 +76,6 @@
             custom:pager_animation="Accordion"
             custom:pager_animation_span="1100" />
 
-        <com.daimajia.slider.library.Indicators.PagerIndicator
-            android:id="@+id/custom_indicator2"
-            style="@style/AndroidImageSlider_Corner_Oval_Orange"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp" />
     </android.support.v7.widget.CardView>
 
 
